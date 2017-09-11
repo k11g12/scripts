@@ -22,8 +22,9 @@ requests_log = logging.getLogger("requests.packages.urllib3")
 requests_log.setLevel(logging.DEBUG)
 requests_log.propagate = True
 """
+doc_id = sys.argv[1]
 
-doc_url = "https://docs.google.com/document/export?format=pdf&id=1lh5VBnVeY-XDBENyjhJlawlcyfaUpACsEJrjSb3ldH4"
+doc_url = "https://docs.google.com/document/export?format=pdf&id=" + doc_id
 
 r = requests.get(doc_url)
 filename = '/tmp/formosahuasca.pdf'
@@ -35,7 +36,7 @@ print("download pdf done")
 
 description = "台灣相思湯指南"
 
-indays = int(sys.argv[1])
+indays = int(sys.argv[2])
 
 expire = (datetime.datetime.now() + datetime.timedelta(days=indays)).strftime('%Y-%m-%d')
 
