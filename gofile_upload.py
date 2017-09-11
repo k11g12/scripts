@@ -22,6 +22,7 @@ requests_log = logging.getLogger("requests.packages.urllib3")
 requests_log.setLevel(logging.DEBUG)
 requests_log.propagate = True
 """
+
 doc_id = sys.argv[1]
 
 doc_url = "https://docs.google.com/document/export?format=pdf&id=" + doc_id
@@ -29,7 +30,7 @@ doc_url = "https://docs.google.com/document/export?format=pdf&id=" + doc_id
 r = requests.get(doc_url)
 filename = '/tmp/formosahuasca.pdf'
 
-with open('/tmp/formosahuasca.pdf', 'wb') as f:
+with open(filename, 'wb') as f:
     f.write(r.content)
 
 print("download pdf done")
@@ -42,7 +43,7 @@ expire = (datetime.datetime.now() + datetime.timedelta(days=indays)).strftime('%
 
 url = "https://gofile.io/ajax/upload.php"
 
-files = {'file[]': ("台灣相思湯指南Formosahuasca.pdf", open(filename, 'rb'),'application/pdf')}
+files = {'file[]': ("Formosahuasca.pdf", open(filename, 'rb'),'application/pdf')}
 
 data = {
         'comments': 0,
